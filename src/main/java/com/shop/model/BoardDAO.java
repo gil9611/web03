@@ -16,7 +16,7 @@ public class BoardDAO {
 	String sql = "";
 	int cnt = 0;
 	
-	public ArrayList<BoardVO> getBordList(){
+	public ArrayList<BoardVO> getBoardList(){
 		ArrayList<BoardVO> list = null;
 		try {
 			conn = JDBCConnection.getConnection();
@@ -106,7 +106,7 @@ public class BoardDAO {
 	public int editBoard(BoardVO vo) {
 		try {
 			conn = JDBCConnection.getConnection();
-			sql = "update board set title=?, note=? indate=sysdate where seq=?";
+			sql = "update board set title=?, note=?, indate=sysdate where seq=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getTitle());
 			pstmt.setString(2, vo.getNote());
@@ -127,12 +127,12 @@ public class BoardDAO {
 		return cnt;
 	}
 	
-	public int delBoard(BoardVO vo) {
+	public int delBoard(int seq) {
 		try {
 			conn = JDBCConnection.getConnection();
 			sql = "delete from board where seq=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, vo.getSeq());
+			pstmt.setInt(1, seq);
 			cnt = pstmt.executeUpdate();
 		} catch(ClassNotFoundException e) {
 			System.out.println("드라이버 로딩 실패.");

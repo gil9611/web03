@@ -27,7 +27,7 @@ public class GetBoardListCtrl extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BoardDAO dao = new BoardDAO();
-		ArrayList<BoardVO> list = dao.getBordList();
+		ArrayList<BoardVO> list = dao.getBoardList();
 		
 		request.setAttribute("list", list);  //요청 저장소에 담기
 		RequestDispatcher view = request.getRequestDispatcher("./board/getBoardList.jsp");  //보내질 곳 지정

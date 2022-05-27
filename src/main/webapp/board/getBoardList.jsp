@@ -49,7 +49,7 @@
 				</c:forEach>
 				<tr>
 					<td colspan="4">
-						<a href="${path }/addBoardForm.jsp">글 등록</a>
+						<a href="${path }/board/addBoardForm.jsp">글 등록</a>
 					</td>
 				</tr>	
 			</tbody>

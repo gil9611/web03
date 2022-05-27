@@ -1,0 +1,16 @@
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+주소 찾기
+
+select userid, userpw, email, tel, addr1, addr2, postcode, to_char(regdate, 'yyyy-MM-dd HH24:mi:ss') as cdate, birth, userpoint, visited from member where userid=?
+sql 문자열로 바꾸기
+
+
+PrintWriter out = response.getWriter();
+		MemberDAO dao = new MemberDAO();
+		ArrayList<MemberVO> memberList = null;
+		memberList = dao.JSONMemberList();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("memberList", memberList);
+		JSONObject json = new JSONObject();
+		json.putAll(map);
+		out.println(json);

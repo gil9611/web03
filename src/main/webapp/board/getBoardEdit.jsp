@@ -14,7 +14,7 @@
 	<jsp:include page="//header.jsp"></jsp:include>
 	
 	<div id="content" class="panel-body">
-		<form action="${path }/EditBordCtrl" method="post">
+		<form action="${path }/EditBoardCtrl" method="post">
 			<table class="table" id="lst_tb">
 				<tbody>
 						<tr>

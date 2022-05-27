@@ -28,9 +28,9 @@ public class GetBoardEditCtrl extends HttpServlet {
     	BoardDAO dao = new BoardDAO();
     	BoardVO vo = dao.getBoard(num);
 		
-		request.setAttribute("vo", vo);  //요청 저장소에 담기
-		RequestDispatcher view = request.getRequestDispatcher("./board/getBoardEdit.jsp");  //보내질 곳 지정
-		view.forward(request, response);   //지정된 곳에 저장된 요청데이터를 전송하기
+		request.setAttribute("vo", vo); 
+		RequestDispatcher view = request.getRequestDispatcher("./board/getBoardEdit.jsp");
+		view.forward(request, response);   
 	}
 
 }

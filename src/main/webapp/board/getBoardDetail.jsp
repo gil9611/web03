@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="com.shop.common.BoardVO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +38,7 @@
 				<tr>
 					<td colspan="4">
 						<a href="${path }/GetBoardEditCtrl?num=${vo.seq }">글 수정</a>
-						<a href="${path }/.jsp">글 삭제</a>
+						<a href="${path }/DelBoardCtrl?num=${vo.seq }">글 삭제</a>
 						<a href="${path }/GetBoardListCtrl">글 목록</a>
 					</td>
 				</tr>	

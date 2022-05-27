@@ -1,13 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	//MemberVO user
+	String sid = (String) session.getAttribute("sid");
+	String sname = (String) session.getAttribute("sname");
+	if(sid!=null) sid=sid.trim().toLowerCase();
+%>
 <c:set var="path" value="${pageContext.request.contextPath }" />  
 <header id="header" class="panel-heading">
 	<div class="hd_wrap">
 		<nav class="navbar" role="navigation" aria-label="main navigation">
 		  <div class="navbar-brand">
 		    <a class="navbar-item" href="index.jsp">
-		      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+		      <img src="${path }/img/logo.png" width="112" height="28">
 		    </a>
 		
 		    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -41,22 +47,22 @@
 		        </div>
 		      </div>
 		      <div class="navbar-item has-dropdown is-hoverable">
-		        <a class="navbar-link">
+		        <a class="navbar-link" href="GetGoodsListCtrl">
 		          제품안내
 		        </a>
 		        <div class="navbar-dropdown">
 		          <a class="navbar-item">
-		            제품1
+		            귀걸이
 		          </a>
 		          <a class="navbar-item">
-		            제품2
+		            반지
 		          </a>
 		          <a class="navbar-item">
-		            제품3
+		            목걸이
 		          </a>
 		          <hr class="navbar-divider">
 		          <a class="navbar-item">
-		            제품4
+		            등등
 		          </a>
 		        </div>
 		      </div>
@@ -76,9 +82,6 @@
 		            자주하는 질문 및 답변
 		          </a>
 		          <hr class="navbar-divider">
-		          <a class="navbar-item">
-		            반품안내
-		          </a>
 		        </div>
 		      </div>
 		    </div>
@@ -86,12 +89,29 @@
 		    <div class="navbar-end">
 		      <div class="navbar-item">
 		        <div class="buttons">
-		          <a class="button is-primary">
-		            <strong>회원가입</strong>
-		          </a>
-		          <a class="button is-light">
-		            로그인
-		          </a>
+		        	<%if(sid==null){ %>
+				       	<a class="button is-primary" href="agree.jsp">
+		            		<strong>회원가입</strong>
+		          		</a>
+				       	<a class="button is-light" href="login.jsp">
+		          		 	로그인
+		         		</a>
+					<%} else if(!sid.equals("admin")) { %>
+						<a class="button is-primary" href="/web02/GetMypageCtrl">
+							<%=sname %>
+						</a>
+						<a class="button is-light" href="${path }/LogoutCtrl">
+		          		 	로그아웃
+		         		</a>
+					<%} else{%>
+						<a class="button is-primary" href="/web02/GetMypageCtrl">
+							<%=sname %>
+						</a>
+						<a class="button is-light" href="/web02/GetCustomerListCtrl">고객목록</a>
+						<a class="button is-light" href="${path }/LogoutCtrl">
+		          		  로그아웃
+		         		</a>
+					<%} %>
 		        </div>
 		      </div>
 		    </div>

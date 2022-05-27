@@ -16,7 +16,7 @@ class VOTest {
 
 	private BoardVO board;
 	private MemberVO member;
-	private String data1 = "여기는 제목";
+	private String data1 = "VO테스트 타이틀";
 	private String data2 = "admin"; 
 	
 	@BeforeAll
@@ -31,9 +31,9 @@ class VOTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		System.out.println("테스트 시작");
 		board = new BoardVO();
 		member = new MemberVO();
-		System.out.println("테스트 시작");		
 	}
 
 	@AfterEach
@@ -43,7 +43,7 @@ class VOTest {
 
 	@Test
 	void VOtest1() {
-		board.setTitle("여기는 제목");
+		board.setTitle("VO테스트 타이틀");
 		System.out.println("데이터 : "+board.getTitle());
 		assertEquals(data1, board.getTitle());
 		fail("VOTest1 False");
@@ -51,9 +51,9 @@ class VOTest {
 
 	@Test
 	void VOtest2() {
-		member.setUserid("admin");
-		System.out.println("데이터 : "+member.getUserid());
-		assertEquals(data2, member.getUserid());
+		member.setMid("admin");
+		System.out.println("데이터 : "+member.getMid());
+		assertEquals(data2, member.getMid());
 		fail("VOTest2 False");
 	}
 }

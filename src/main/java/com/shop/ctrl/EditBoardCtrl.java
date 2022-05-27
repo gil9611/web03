@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.shop.common.BoardVO;
 import com.shop.model.BoardDAO;
 
-@WebServlet("/EditBordCtrl")
-public class EditBordCtrl extends HttpServlet {
+@WebServlet("/EditBoardCtrl")
+public class EditBoardCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public EditBordCtrl() {
+    public EditBoardCtrl() {
         super();
        
     }
@@ -31,9 +31,13 @@ public class EditBordCtrl extends HttpServlet {
 		vo.setNote(note);
 		
     	int cnt = dao.editBoard(vo);
-		
-    	if(cnt<0) {
-    		
+
+    	if(cnt>0) {
+    		//성공
+    		response.sendRedirect("GetBoardDetailCtrl?num=" +vo.getSeq());
+    	} else {
+    		//실패
+    		response.sendRedirect("GetBoardEditCtrl?num=" +vo.getSeq());
     	}
 	}
 
