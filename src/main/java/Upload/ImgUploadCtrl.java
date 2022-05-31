@@ -60,8 +60,10 @@ public class ImgUploadCtrl extends HttpServlet {
 			out.println("<p>이미지1 : " +imgUpload +"</p>");
 			out.println("<p>이미지1 : " +filen +"</p>");
 			out.println("<p>리퀘스트 : " +request.getSession().getServletContext().getRealPath("/") +"</p>");
+			//out.println("<p>리퀘스트 : " +request.contextPath +"</p>");
 			out.println("<p>리퀘스트 : " + "https://gojoo.tistory.com/60" +"</p>");
-			
+			//https://yooniron.tistory.com/45
+			//https://velog.io/@ansalstmd/JSP7.-%ED%8C%8C%EC%9D%BC-%EC%97%85%EB%A1%9C%EB%93%9C
 			
 		} catch(Exception e) {
 			e.printStackTrace();

@@ -10,10 +10,10 @@
 <body>
 <div class="container">
 <header id="hd">
-	<%@ include file="header.jsp" %>
+	<%@ include file="//header.jsp" %>
 </header>
 <div id="content">
-	<form action="join.jsp" method="post" name="agree_form" onsubmit="return send(this)">
+	<form action="${path }/member/join.jsp" method="post" name="agree_form" onsubmit="return send(this)">
 		<h3>회원 약관</h3>
 		<div id="protocol1" class="proto">
 					제 1 장 총칙
@@ -125,7 +125,7 @@
 	</script>
 </div>
 <footer id="ft">
-	<%@ include file="footer.jsp" %>
+	<%@ include file="//footer.jsp" %>
 </footer>
 </div>
 </body>

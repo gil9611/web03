@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>  
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	//MemberVO user
+	String sid = (String) session.getAttribute("sid");
+	String sname = (String) session.getAttribute("sname");
+	if(sid!=null) sid=sid.trim().toLowerCase();
+%>
 <c:set var="path1" value="${pageContext.request.contextPath }" />  
 <!DOCTYPE html>
 <html>
@@ -47,11 +53,16 @@
 						<td>${vo.indate }</td>
 					</tr>
 				</c:forEach>
-				<tr>
-					<td colspan="4">
-						<a href="${path }/board/addBoardForm.jsp">글 등록</a>
-					</td>
-				</tr>	
+				<%if(sid != null){ %>
+					<%if(sid.equals("admin")){ %>
+					<tr>
+						<td colspan="4">
+							<a href="${path }/board/addBoardForm.jsp">글 등록</a>
+						</td>
+					</tr>
+					<%} %>
+				<%} %>
+					
 			</tbody>
 		</table>
 	</div>

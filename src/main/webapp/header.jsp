@@ -7,12 +7,12 @@
 	String sname = (String) session.getAttribute("sname");
 	if(sid!=null) sid=sid.trim().toLowerCase();
 %>
-<c:set var="path" value="${pageContext.request.contextPath }" />  
+<c:set var="path" value="${pageContext.request.contextPath }"/>
 <header id="header" class="panel-heading">
 	<div class="hd_wrap">
 		<nav class="navbar" role="navigation" aria-label="main navigation">
 		  <div class="navbar-brand">
-		    <a class="navbar-item" href="index.jsp">
+		    <a class="navbar-item" href="${path }/index.jsp">
 		      <img src="${path }/img/logo.png" width="112" height="28">
 		    </a>
 		
@@ -29,7 +29,6 @@
 		        <a class="navbar-link">
 		          쇼핑몰
 		        </a>
-		
 		        <div class="navbar-dropdown">
 		          <a class="navbar-item">
 		            쇼핑몰 소개
@@ -47,7 +46,7 @@
 		        </div>
 		      </div>
 		      <div class="navbar-item has-dropdown is-hoverable">
-		        <a class="navbar-link" href="GetGoodsListCtrl">
+		        <a class="navbar-link" href="${path }/GetGoodsListCtrl">
 		          제품안내
 		        </a>
 		        <div class="navbar-dropdown">
@@ -72,7 +71,7 @@
 		        </a>
 		
 		        <div class="navbar-dropdown">
-		          <a class="navbar-item" href="GetBoardListCtrl">
+		          <a class="navbar-item" href="${path }/GetBoardListCtrl">
 		            공지사항
 		          </a>
 		          <a class="navbar-item">
@@ -90,24 +89,30 @@
 		      <div class="navbar-item">
 		        <div class="buttons">
 		        	<%if(sid==null){ %>
-				       	<a class="button is-primary" href="agree.jsp">
+				       	<a class="button is-primary" href="${path }/member/agree.jsp">
 		            		<strong>회원가입</strong>
 		          		</a>
-				       	<a class="button is-light" href="login.jsp">
+				       	<a class="button is-light" href="${path }/member/login.jsp">
 		          		 	로그인
 		         		</a>
 					<%} else if(!sid.equals("admin")) { %>
-						<a class="button is-primary" href="/web02/GetMypageCtrl">
+						<a class="button is-primary" href="${path }/GetMypageCtrl">
 							<%=sname %>
 						</a>
+						<a class="button is-light" href="${path }/GetBasketListCtrl">
+		          		 	장바구니
+		         		</a>
 						<a class="button is-light" href="${path }/LogoutCtrl">
 		          		 	로그아웃
 		         		</a>
 					<%} else{%>
-						<a class="button is-primary" href="/web02/GetMypageCtrl">
+						<a class="button is-primary" href="${path }/GetMypageCtrl">
 							<%=sname %>
 						</a>
-						<a class="button is-light" href="/web02/GetCustomerListCtrl">고객목록</a>
+						<a class="button is-light" href="${path }/GetMemberListCtrl">고객목록</a>		
+						<a href="${path }/AccessListCtrl" class="button is-light">
+		            		접속자관리
+		          		</a>
 						<a class="button is-light" href="${path }/LogoutCtrl">
 		          		  로그아웃
 		         		</a>

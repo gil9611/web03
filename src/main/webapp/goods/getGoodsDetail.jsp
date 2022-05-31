@@ -22,7 +22,7 @@
 					<th colspan="6">${vo.gname }</th>
 				</tr>
 				<tr>
-					<td colspan="4" rowspan="4">${vo.gimg }</td>
+					<td colspan="4" rowspan="4"><img alt="제품이미지" src="${vo.gimg }"></td>
 					<th class="item">가격</th>
 					<td>${vo.gprice }원</td>
 				</tr>
@@ -43,9 +43,9 @@
 				</tr>
 				<tr>
 					<td colspan="4">
-						<a href="${path }/GetBoardEditCtrl?num=">상품 주문</a>
-						<a href="${path }/GetBoardEditCtrl?num=">장바구니 담기</a>
-						<a href="${path }/GetBoardListCtrl">카테고리 목록</a>
+						<a href="">상품 주문</a>
+						<a href="${path }/InsertBasketCtrl?gcode=${vo.gcode}">장바구니 담기</a>
+						<a href="${path }/GetGoodsListCtrl">카테고리 목록</a>
 					</td>
 					<th>남은 재고</th>
 					<td>${vo.gamount }</td>

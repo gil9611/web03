@@ -120,7 +120,7 @@ public class BasketDAO {
 	public int insertBasket(BasketVO vo) {
 		try {
 			conn = JDBCConnection.getConnection();
-			sql = "insert into basket values ((select nvl(max(bno), 0)+1 from basket), ?, ?, ?, ?, ?, ?, ?, ?, sysdate);";
+			sql = "insert into basket values ((select nvl(max(bno), 0)+1 from basket), ?, ?, ?, ?, ?, ?, ?, ?, sysdate)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getBid());
 			pstmt.setInt(2, vo.getBcode());
@@ -130,6 +130,27 @@ public class BasketDAO {
 			pstmt.setString(6, vo.getBsize());
 			pstmt.setString(7, vo.getBmaterial());
 			pstmt.setInt(8, vo.getBorder());
+			cnt = pstmt.executeUpdate();
+		} catch(ClassNotFoundException e) {
+			System.out.println("드라이버 로딩 실패.");
+			e.printStackTrace();
+		} catch(SQLException e) {
+			System.out.println("SQL구문 처리 실패.");
+			e.printStackTrace();
+		} catch(Exception e) {
+			System.out.println("잘못된 오류.");
+			e.printStackTrace();
+		} finally {
+			JDBCConnection.close(rs, pstmt, conn);
+		}
+		return cnt;
+	}
+	public int delBasket(int bno) {
+		try {
+			conn = JDBCConnection.getConnection();
+			sql = "delete from basket where bno=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
 			cnt = pstmt.executeUpdate();
 		} catch(ClassNotFoundException e) {
 			System.out.println("드라이버 로딩 실패.");

@@ -26,7 +26,6 @@ public class GetGoodsListCtrl extends HttpServlet {
 
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		GoodsDAO dao = new GoodsDAO();
 		ArrayList<GoodsVO> list = dao.getGoodsList();
 		

@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>  
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="path1" value="${pageContext.request.contextPath }" />  
+<%
+	//MemberVO user
+	String sid = (String) session.getAttribute("sid");
+	String sname = (String) session.getAttribute("sname");
+	if(sid!=null) sid=sid.trim().toLowerCase();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,29 +30,24 @@
 				</tr>
 			</table>
 		</form>
-		<table class="table" id="lst_tb">
-			<thead>
-				<tr>
-					<th class="item1">이미지</th>
-					<th class="item2">이름</th>
-					<th class="item3">가격</th>
-				</tr>
-			</thead>
-			<tbody>
+		<ul class="table" id="lst_tb">
+			<li class="ub">
 				<c:forEach items="${list }" var="vo" varStatus="status">
-					<tr>
-						<td>${vo.gimg }</td>
-						<td><a href="${path }/GetGoodsDetailCtrl?code=${vo.gcode }">${vo.gname }</a></td>
-						<td>${vo.gprice }</td>
-					</tr>
+					<ul>
+						<li><img alt="제품이미지" src="${vo.gimg }"></li>
+						<li><a href="${path }/GetGoodsDetailCtrl?code=${vo.gcode }">${vo.gname }</a></li>
+						<li>${vo.gprice }</li>
+					</ul>
 				</c:forEach>
-				<tr>
-					<td colspan="4">
-						<a href="${path }/goods/addGoodsForm.jsp">제품 등록</a>
-					</td>
-				</tr>	
-			</tbody>
-		</table>
+				<c:if test="${sid=='admin' }">
+					<ul>
+						<li colspan="4">
+							<a href="${path }/goods/addGoodsForm.jsp">제품 등록</a>
+						</li>
+					</ul>
+				</c:if>
+			</li>
+		</ul>
 	</div>
 	<jsp:include page="//footer.jsp"></jsp:include>
 </body>

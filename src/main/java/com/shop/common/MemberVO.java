@@ -10,18 +10,19 @@ public class MemberVO {
 	private int mlank;
 	private int mpoint;
 	private Date regdate;
-	private String cdate;
+	private String sdate;
+	
 	public Date getRegdate() {
 		return regdate;
 	}
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	public String getCdate() {
-		return cdate;
+	public String getSdate() {
+		return sdate;
 	}
-	public void setCdate(String cdate) {
-		this.cdate = cdate;
+	public void setSdate(String sdate) {
+		this.sdate = sdate;
 	}
 	public String getMid() {
 		return mid;

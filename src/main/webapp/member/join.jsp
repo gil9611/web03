@@ -10,7 +10,7 @@
 <body>
 <header id="hd">
 		<div class="hd_wrap">
-			<%@ include file="header.jsp" %>
+			<%@ include file="//header.jsp" %>
 		</div>
 	</header>
 	<div class="content">
@@ -73,7 +73,7 @@
 		</form>
 	</div>
 	<footer id="ft">
-		<%@ include file="footer.jsp" %>
+		<%@ include file="//footer.jsp" %>
 	</footer>
 </body>
 </html>
